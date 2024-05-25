@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h2> Member <span th:text="${formTitle}">Resistration</span> Form </h2>
+<form action="#" th:action ="@{/member/memberWriteOk}" th:object = "${memberDTO}" method = "POST" target="_blank">
+<label for = "name">name</label>
+<input type ="text" id = "name" name ="name" th:field = "*{name}"><br>
+<label for = "id">id</label>
+<input type ="text" id = "id" name ="id" th:field = "*{id}"><br>
+<label for = "phone">phone</label>
+<input type ="text" id = "phone" name ="phone" th:field = "*{phone}"><br>
+<input type = "submit" value ="submit">
+<input type = "reset" value ="reset">
+
+   
+</form>
+
+</body>
+</html>
