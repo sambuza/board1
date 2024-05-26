@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.board1.dto.MemberDTO;
 import com.board1.mapper.MemberMapper;
 
+import java.util.List;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -21,4 +23,18 @@ public class MemberServiceImpl implements MemberService {
     
     return memberMapper.selectMemberOne(num);
     }
+
+	@Override
+	public List<MemberDTO> getMemberAll() {
+
+		return null;
+	}
+
+	@Override
+	public void deleteMemberOne(String id) {
+		memberMapper.deleteMemberOne(id);
+	}
+
+
+	
     }

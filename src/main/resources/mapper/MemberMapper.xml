@@ -15,5 +15,14 @@
 	SELECT * FROM member WHERE num = #{num};
 	
 	</select>
+
+	<delete id="deleteMemberOne">
+		DELETE FROM member WHERE id = #{id}
+	</delete>
+
+	<select id="getMemberAll" parameterType="int" resultType="MemberDTO">
+		SELECT * FROM member order by id DESC ;
+
+	</select>
     </mapper>
 

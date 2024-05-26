@@ -19,9 +19,9 @@ public class MapperTests {
 	public void testInsert2() {
 	
 		MemberDTO m1 = new MemberDTO();
-		m1.setName("i kim");
-    	m1.setId("i1");
-		m1.setPhone("90-232-2222");
+		m1.setName("new Borned");
+    	m1.setId("sych21");
+		m1.setPhone("900-232-2222");
 	
 		memberService.insertMember(m1);
 

@@ -24,13 +24,12 @@ public class MemberController {
 	
 	@GetMapping("member/memberWriteForm")
 	public String memeberWirteForm(
-			@RequestParam(value = "num", required=false) Integer num, String uname,//int 는 널이 허용안된다 그래서 Integer
+			@RequestParam(value = "num", required=false) Integer num,//int 는 널이 허용안된다 그래서 Integer
 			  Model model) {
-		if(uname != null) {
+		if(num != null) {
 			
 		System.out.println(num);
-		System.out.println(uname);
-		
+
 		MemberDTO m1 = memberService.getMemberOne(num);
 	
 		System.out.println(m1.getName());
@@ -44,7 +43,6 @@ public class MemberController {
 			
 			model.addAttribute("memberDTO",new MemberDTO());
 			model.addAttribute("formTitle", "Registration");	
-			System.out.println(uname);
 		System.out.println("null이무니니닌니다");
 		}
 		
