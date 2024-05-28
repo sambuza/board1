@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+  font-family: "Gothic", Arial, sans-serif; /* 고딕체를 기본으로 사용하되, 없을 경우 Arial, sans-serif를 사용합니다. */
+  background-color: #0f0e0e; /* 배경색 */
+  color: #0f0e0e; /* 텍스트 색상 */
+}
+
+h1 {
+  color: #ffffff;
+}
+
+header {
+  background-color: #0f0e0e; /* 헤더 배경색 */
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between; /* 로고와 네비게이션을 좌우에 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  flex-wrap: wrap; /* 화면이 작아질 때 아이템이 줄 바꿈되도록 설정 */
+}
+
+.logo {
+  /* margin-right: 100px;  로고 오른쪽 여백 */
+  margin-left: 100px;
+  color: red;
+  margin-top: 10px;
+}
+
+.logo img {
+  max-width: 100px; /* 로고 이미지의 최대 너비 */
+}
+
+.hero {
+  text-align: center;
+  padding-top: 100px;
+}
+.hero_Main_Image {
+  padding-top: 100px;
+  text-align: center;
+}
+.heroMessage01 {
+  text-align: center;
+  font-size: larger;
+  font: 1em sans-serif;
+  margin: 20px;
+  padding-top: 20px;
+}
+.hero4Image01 {
+  padding-top: 100px;
+  margin-left: 200px;
+  text-align: left;
+  justify-content: start;
+}
+.hero4Image02 {
+  padding-top: 100px;
+}
+
+.hero4Image03 {
+  padding-top: 100px;
+}
+.hero4Image04 {
+  padding-top: 100px;
+}
+
+.heroimages {
+  display: flex;
+}
+.hero_sub {
+  text-align: center;
+  padding-top: 100px;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 135px;
+  margin-right: 110px;
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff; /* 하얀색 링크 텍스트 */
+  font-size: 18px;
+}
+
+nav ul li a:hover {
+  color: #cccccc; /* 회색으로 변하는 링크 텍스트 */
+}
+
+main {
+  padding: 20px;
+}
+
+b {
+  color: red;
+}
+
+footer {
+  background-color: #f8f8f8; /* 푸터 배경색 */
+  padding: 20px 0;
+  text-align: center;
+  color: #ffffff; /* 하얀색 푸터 텍스트 */
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  nav {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  nav ul li a {
+    padding: 10px 20px;
+    width: 100%;
+    display: block;
+  }
+
+  .img_responsive {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@font-face {
+  font-family: "NotoSerifKR";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+p {
+  font-family: "NotoSerifKR";
+}
