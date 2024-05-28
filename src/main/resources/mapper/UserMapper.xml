@@ -7,18 +7,38 @@
         INSERT INTO users (username, email, passwordhash, createdat)
         VALUES (#{username}, #{email}, SHA2(#{passwordHash},256), #{createdAt})
     </insert>
-    <select id="getMemberOne" parameterType="int" resultType="MemberDTO">
-        SELECT * FROM member WHERE num = #{num};
+
+
+    <select id="getUserById" parameterType="int" resultType="UserDTO">
+        SELECT * FROM users WHERE UserID = #{UserID};
 
     </select>
 
-    <delete id="deleteMemberOne">
-        DELETE FROM member WHERE id = #{id}
+    <delete id="deleteUser">
+        DELETE FROM users WHERE UserId = #{id}
     </delete>
 
-    <select id="getMemberAll" parameterType="int" resultType="MemberDTO">
-        SELECT * FROM member order by id DESC ;
+    <select id="getAllUsers" >
+        SELECT * FROM users order by UserID DESC ;
 
     </select>
+    <update id="updateUser" parameterType="map">
+        UPDATE users
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="PasswordHash != null">PasswordHash = SHA2(#{PasswordHash},256),</if>
+            <if test="createdAt != null">createdat = #{createdAt},</if>
+        </set>
+        WHERE UserID = #{UserID}
+    </update>
+    
+    <select id="authenticateUser" parameterType="hashMap" resultType="int">
+		SELECT COUNT(*)
+		FROM usersam
+		WHERE userid = #{userid}
+		  AND userpwd = SHA2(#{password}, 256)
+	</select>
+
 </mapper>
 

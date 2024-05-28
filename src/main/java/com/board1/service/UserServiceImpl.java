@@ -2,9 +2,14 @@ package com.board1.service;
 
 import com.board1.dto.UserDTO;
 import com.board1.mapper.UserMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService {
 
@@ -20,24 +25,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(UserDTO user) {
 
-        try {
-            String plainPassword = user.getPasswordHash();
-            String hashedPassword = passwordEncoder.encode(plainPassword);
-            System.out.println(hashedPassword); // 이 줄이 정상적으로 실행되지 않을 경우를 대비해 try 블록 내부로 이동
-
-            user.setPasswordHash(hashedPassword);
-            userMapper.createUser(user);
-        } catch (Exception e) {
-            // 예외가 발생할 경우 로그를 출력합니다.
-            e.printStackTrace();
-            // 또는 로그를 사용하여 예외를 기록할 수 있습니다.
-            // logger.error("Error occurred while hashing password: " + e.getMessage());
-        }
+        userMapper.createUser(user);
     }
 
     @Override
-    public UserDTO getUserById(int userId) {
-        return userMapper.selectUserById(userId);
+    public UserDTO getUserById(int UserID) {
+        return userMapper.selectUserById(UserID);
     }
 
     @Override
@@ -46,14 +39,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO updateUser(int userId, UserDTO user) {
-        user.setUserId(userId);
-        userMapper.updateUser(user);
-        return user;
+    public void updateUser(int UserID, String username, String email, String PasswordHash, LocalDateTime createdAt) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("UserID", UserID);
+        if (username != null) params.put("username", username);
+        if (email != null) params.put("email", email);
+        if (PasswordHash != null) params.put("PasswordHash", PasswordHash);
+        if (createdAt != null) params.put("createdAt", createdAt);
+
+        userMapper.updateUser(params);
     }
 
     @Override
-    public void deleteUser(int userId) {
-        userMapper.deleteUser(userId);
+    public void deleteUser(int UserId) {
+        userMapper.deleteUser(UserId);
     }
+
+    @Override
+    public int authenticateUser(String userid, String password) {
+        return userMapper.authenticateUser(userid, password);
+
+    }
+    
+
 }
